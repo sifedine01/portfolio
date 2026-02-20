@@ -1,23 +1,21 @@
 # Personal Portfolio Website
 
-A modern, responsive personal portfolio website built with HTML, CSS, and JavaScript. Features a dark theme with glowing accents and smooth rounded components.
+A modern, responsive personal portfolio website built with HTML, CSS, and JavaScript. Features a dark green theme with elegant design and smooth animations.
 
 ## 🎨 Design Features
 
-- **Dark Modern Theme**: #0e0e0e background with #1e1e1e cards
-- **Glowing Accents**: #007bff primary color with hover effects
-- **Smooth Animations**: Skill bar animations and hover effects
-- **Responsive Design**: Mobile-first approach with breakpoint at 768px
-- **Rounded Components**: 16px border radius for cards and buttons
+- **Dark Green Theme**: Custom color palette with #051F20 background and #8EB69B accents
+- **Smooth Animations**: Reveal-on-scroll, hover effects, and custom cursor
+- **Responsive Design**: Mobile-first approach with breakpoint at 900px
+- **Modern Components**: Rounded cards, floating chips, and gradient effects
 
 ## 📁 File Structure
 
 ```
 portfolio/
-├── index.html          # Main HTML structure
-├── styles.css          # All styling and responsive design
-├── script.js           # Interactive functionality
-├── Design.json         # Design system specifications
+├── index.html          # Main homepage with all sections
+├── projects.html       # All projects page with filtering
+├── app-gallery.html    # Mobile app gallery with screenshots
 └── README.md          # This file
 ```
 
@@ -35,79 +33,97 @@ portfolio/
 
 ## 📱 Sections Overview
 
-### 1. **Navbar**
-- Sticky navigation with smooth scrolling
-- Section links and call-to-action button
-- Responsive design (links hide on mobile)
+### 1. **Hero Section**
+- Animated profile card with floating chips
+- Stats display (projects, years, passion)
+- Call-to-action buttons
 
 ### 2. **About Section**
 - Two-column layout with bio and profile image
-- Social media links with hover effects
-- Circular profile image with blue border
+- Social media links (Email, LinkedIn, GitHub, Twitter)
+- Location badge overlay
 
 ### 3. **Education Section**
-- Two cards showing education history
-- Tags for years and categories
-- Responsive grid layout
+- Three education cards with progress bars
+- Web Development (2024-2025)
+- Mobile Development (2025-2026)
+- Open Source & Projects (Ongoing)
 
 ### 4. **Skills Section**
-- Front-end and Back-end skill categories
-- Animated progress bars
-- Skills animate when scrolled into view
+- Simple bubble layout (no cards)
+- 20 skills displayed as interactive bubbles
+- Centered, responsive design
 
 ### 5. **Projects Section**
-- Project cards with image placeholders
-- Technology tags and action buttons
-- "View More" button for additional projects
+- Featured projects on homepage (3 web apps)
+- "View All Projects" button links to projects.html
 
 ### 6. **Contact Section**
-- Split layout with contact info and form
-- Form validation and submission handling
-- Contact details with icons
+- Contact information cards
+- Contact form with validation
+- Location, email, phone, availability
 
 ## 🎯 Customization
 
 ### Colors
-The color scheme is defined in `styles.css`:
-- Background: `#0e0e0e`
-- Cards: `#1e1e1e`
-- Primary: `#007bff`
-- Text: `#ffffff` / `#dddddd`
+The color scheme is defined in CSS variables:
+- `--c1: #051F20` (Background)
+- `--c2: #0B2B26` (Card background)
+- `--c3: #163832` (Secondary)
+- `--c4: #235347` (Tertiary)
+- `--c5: #8EB69B` (Primary accent)
+- `--c6: #DAF1DE` (Text)
 
 ### Content
-Update the content in `index.html`:
-- Personal information in the About section
-- Education details in the Education cards
-- Skills and percentages in the Skills section
-- Project information and links
-- Contact details and form
+Update content directly in HTML files:
+- **index.html**: Personal info, bio, education, skills, featured projects
+- **projects.html**: All projects data in JavaScript array
+- **app-gallery.html**: Mobile app gallery data (synced with projects.html)
 
-### Styling
-Modify `styles.css` to change:
-- Fonts and typography
-- Spacing and layout
-- Animations and transitions
-- Responsive breakpoints
+### Adding Projects
+In `projects.html`, add to the `projectsData` array:
+```javascript
+{
+    id: 15,
+    title: "Your Project",
+    category: "web" or "mobile",
+    description: "Project description",
+    image: "path/to/image.png",
+    icon: "fas fa-icon-name",
+    tags: ["Tech1", "Tech2"],
+    liveUrl: "https://...",
+    githubUrl: "https://...",
+    // For mobile apps only:
+    apkUrl: "path/to/app.apk",
+    gallery: ["screenshot1.png", "screenshot2.png"],
+    galleryDescription: "Detailed description",
+    galleryFeatures: ["Feature 1", "Feature 2"]
+}
+```
 
 ## 🔧 Features
 
 ### Interactive Elements
+- **Custom Cursor**: Animated dot and ring cursor (desktop)
 - **Smooth Scrolling**: Navigation links scroll smoothly to sections
 - **Form Validation**: Contact form with email validation
-- **Skill Animations**: Progress bars animate when visible
-- **Hover Effects**: Cards and buttons have glowing hover effects
+- **Reveal Animations**: Elements fade up when scrolled into view
+- **Hover Effects**: Cards and buttons with transform effects
 - **Ripple Effects**: Button click animations
+- **Lightbox Gallery**: Click screenshots to view full-size with keyboard navigation
+
+### Project Features
+- **Filtering**: Filter projects by All/Mobile/Web on projects.html
+- **Dynamic Buttons**: 
+  - Web apps: "Live" + "Code" buttons
+  - Mobile apps: "App Photos" + "Code" + "Install APK" buttons
+- **App Gallery**: Dedicated page for mobile app screenshots and details
 
 ### Responsive Design
-- **Mobile Breakpoint**: 768px
-- **Single Column**: Layout switches to single column on mobile
-- **Centered Text**: All text centers on mobile
-- **Stacked Cards**: Cards stack vertically on mobile
-
-### Performance
-- **Optimized CSS**: Efficient selectors and minimal reflows
-- **Smooth Animations**: Hardware-accelerated transitions
-- **Lazy Loading**: Animations trigger on scroll
+- **Mobile Breakpoint**: 900px (navbar), 600px (layout)
+- **Hamburger Menu**: Mobile navigation menu
+- **Flexible Grids**: Auto-fit columns for projects and skills
+- **Stacked Layouts**: Single column on mobile devices
 
 ## 🛠️ Browser Support
 
@@ -118,25 +134,38 @@ Modify `styles.css` to change:
 
 ## 📝 Usage
 
-1. **Personalize Content**: Update the HTML with your information
-2. **Add Images**: Replace placeholder icons with actual images
-3. **Customize Colors**: Modify the CSS variables for your brand
-4. **Add Projects**: Include your actual project screenshots and links
-5. **Deploy**: Upload to your web hosting service
+1. **Personalize Content**: Update HTML with your information
+2. **Add Profile Images**: Replace image paths in hero and about sections
+3. **Update Projects**: Add your projects to the data array in projects.html
+4. **Add Screenshots**: For mobile apps, add screenshot paths to `gallery` array
+5. **Add APK Files**: Upload APK files and link them in `apkUrl`
+6. **Deploy**: Upload to your web hosting service
 
-## 🎨 Design System
+## 🚀 Pages
 
-The website follows the design specifications in `Design.json`:
-- Dark theme with modern aesthetics
-- Consistent spacing and typography
-- Reusable components (cards, buttons, tags)
-- Responsive grid system
-- Smooth animations and transitions
+### index.html
+- Homepage with all main sections
+- Features 3 web projects
+- Links to projects.html for full portfolio
 
-## 📞 Support
+### projects.html
+- Complete project portfolio (9 web + 5 mobile apps)
+- Filter by category (All/Mobile/Web)
+- Dynamic rendering from JavaScript data
+- Mobile apps link to app-gallery.html
 
-For questions or customization help, refer to the code comments in each file or modify the design system in `Design.json`.
+### app-gallery.html
+- Dedicated mobile app showcase page
+- Displays app details, features, and screenshots
+- Lightbox for full-screen image viewing
+- Reads project ID from URL parameter (?id=10)
+
+## 📞 Contact
+
+- **Email**: sifedinebammarouf@gmail.com
+- **LinkedIn**: [Sifedin Bammarouf](https://linkedin.com/in/sifedin-bammarouf-3b8750370)
+- **GitHub**: [sifedine01](https://github.com/sifedine01)
 
 ---
 
-**Built with ❤️ using HTML, CSS, and JavaScript** 
+**Built with ❤️ in Morocco 🇲🇦 using HTML, CSS, and JavaScript** 
